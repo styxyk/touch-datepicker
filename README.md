@@ -16,9 +16,9 @@ A datepicker Vue component. Compatible with Vue 2.x. Works nice on mobile device
 
 ## Install
 
-``` bash
-npm install touch-datepicker --save
-```
+Copy TouchDatePicker.vue component into your project
+
+## Usage
 
 ``` javascript
 import Datepicker from 'touch-datepicker';
@@ -31,8 +31,6 @@ export default {
   // ...
 }
 ```
-
-## Usage
 
 ``` html
 <datepicker></datepicker>
