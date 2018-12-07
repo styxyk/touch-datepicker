@@ -1,0 +1,14 @@
+{
+    "name": "touch-datepicker",
+    "version": "0.1",
+    "main": "src/TouchDatePicker.vue",
+    "description": "A simple Vue.js datepicker component. Inspired by https://github.com/biohzrdmx/jQuery.DateSelect",
+    "keywords": [
+        "vue",
+        "datepicker",
+        "date-picker",
+        "calendar"
+      ],
+    "author": "Sergiu Sandrean <styxyk@google.com>",
+    "license": "MIT"
+  }
