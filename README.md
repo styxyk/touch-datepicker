@@ -11,7 +11,7 @@ A datepicker Vue component. Compatible with Vue 2.x. Works nice on mobile device
 
 ## Preview
 
-![alt text](https://github.com/styxyk/touch-datepicker/raw/master/images/preview.png "Preview")
+![alt text](https://github.com/styxyk/touch-datepicker/blob/master/preview.png "Preview")
 
 
 ## Install
