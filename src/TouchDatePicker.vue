@@ -30,9 +30,9 @@
                     <a @click="yearDown" class="btn-arrow btn-down"><i class="icon icon-down"></i></a>
                 </div>
                 <div class="buttons">
-                    <a @click="hideCalendar" class="btn-cancel"><i class="fa fa-times"></i></a>
-                    <a @click="clearDateButton" class="btn-del"><i class="fa fa-trash"></i></a>
-                    <a @click="acceptButton" class="btn-ok"><i class="fa fa-check"></i></a>
+                    <a @click="hideCalendar" class="btn-cancel"><span class="icon">&times;</span></a>
+                    <a @click="clearDateButton" class="btn-del"><span class="icon">&olarr;</span></a>
+                    <a @click="acceptButton" class="btn-ok"><span class="icon">&check;</span></a>
                 </div>
             </div>
         </div>
@@ -40,21 +40,30 @@
 </template>
 
 <script>
+/* eslint-disable */
+    import moment from 'moment'
+
     export default {
-        props: [
-            'value', //value of hidden input in format YYYY-MM-DD
-            'name', //name of validated element
-            'id',  //id of validated element
-            'formatDate', //output format date
-            'language', //language: en, de, etc
-            'vValidate', //v-validate rules
-            'inputClass', //class applied to the output element
-            'placeholder', //displayed element placeholder
-            'dataVvAs', //data-vv-as from vee-validate
-            'max', //max calendar date
-            'min' //min calendar date
-        ],
-        inject: ['$validator'],
+        props: {
+            value: [Date,String], //value of hidden input in format YYYY-MM-DD
+            name: String, //name of validated element
+            id: {
+                type: String,
+                required: true
+            },  //id of validated element
+            formatDate: {
+                type: String,
+                default: "DD MMMM YYYY"
+            }, //output format date
+            language: String, //language: en, de, etc
+            vValidate: Object, //v-validate rules
+            inputClass: [String, Object], //class applied to the output element
+            placeholder: String, //displayed element placeholder
+            dataVvAs: String, //data-vv-as from vee-validate
+            max: String, //max calendar date
+            min: String //min calendar date
+        },
+        //inject: ['$validator'],
         data() {
             return {
                 calendarOpen: false, //if popup calendar is visible
@@ -65,7 +74,7 @@
                 selectDate: false, //date used in popup calendar
                 calendarLanguage: this.language ? this.language : 'en', //errors and dates language
                 modelValue: this.value, //value of hidden input, is needed for validation to work
-                lastClientY: false, //touchmove event
+                lastClientY: false, //touchmove event,
             }
         },
         inheritAttrs: false,
@@ -99,7 +108,7 @@
         computed: {
             outputDate() {
                 if (this.value) {
-                    return moment(this.value).format(this.outputFormat);
+                    return moment(this.value).format(this.formatDate);
                 }
 
                 return ''
@@ -286,6 +295,7 @@
 <style>
     .date-container {
         position: relative;
+        display: inline-block;
     }
     .date-select {
         position: absolute;
@@ -386,6 +396,12 @@
         bottom: 0;
         width: 100%;
         height: 20px;
+    }
+    .btn-arrow, .btn-cancel, .btn-del, .btn-ok {
+        cursor: pointer;
+    }
+    .icon {
+        font-size: 24px;
     }
     .date-select .select .icon {
         display: block;
