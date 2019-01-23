@@ -16,12 +16,25 @@ A datepicker Vue component. Compatible with Vue 2.x. Works nice on mobile device
 
 ## Install
 
-Copy TouchDatePicker.vue component into your project
+- Copy TouchDatePicker.vue component into your project
+- Install moment: `npm install moment@^2.24.0 --save`
+
+If you want to use vee-validate in your project:
+- Install vee-validate: `npm install vee-validate@^2.0.6 --save`
+
+then add this code into you main file:
+``` javascript
+import VeeValidate from 'vee-validate'
+Vue.use(VeeValidate);
+```
+
+If you don't want to use vee-validate in your project:
+- Remove `v-validate="vValidate"` from TouchDatePicker.vue file
 
 ## Usage
 
 ``` javascript
-import Datepicker from 'touch-datepicker';
+import Datepicker from './TouchDatePicker.vue';
 
 export default {
   // ...
@@ -33,17 +46,17 @@ export default {
 ```
 
 ``` html
-<datepicker></datepicker>
+<datepicker id="dob"></datepicker>
 ```
 
 Using `v-model`
 ``` html
-<datepicker v-model="state.date" name="uniquename"></datepicker>
+<datepicker id="dob" v-model="state.date" name="uniquename"></datepicker>
 ```
 
 Emits events
 ``` html
-<datepicker v-on:change="saveModification"></datepicker>
+<datepicker id="dob" v-on:change="saveModification"></datepicker>
 ```
 
 Full example
